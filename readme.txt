@@ -33,6 +33,10 @@ If you need help with the plugin or you want to report a bug please refer to htt
 Amazon S3 Backup Plugin have a settings section on WordPress plugin page.
 If you need help with the plugin or you want to report a bug, please refer to http://www.wpadm.com/support/
 
+== Frequently Asked Questions ==
+
+FAQ coming soon
+
 == Other ==
 
 Usefull additional functions can be found at www.wpadm.com in the User profile.
@@ -43,9 +47,6 @@ our plugin will get the minimum requirements of php and mysql configuration, ver
 This data will be send to WPAdm service, to get the plugin work correctly, to extend supported configurations of user sites with wpadm-extensions and support.
 WE DO NOT COLLECT AND DO NOT STORE THE PERSONAL DATA OF USERS FROM THIS PLUGIN!
 
-== Frequently Asked Questions ==
-
-FAQ
 
 == Changelog ==
 
