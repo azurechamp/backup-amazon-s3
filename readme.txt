@@ -1,25 +1,25 @@
-=== Amazon S3 Backup ===
-Plugin Name: Amazon S3 Backup
+=== Amazon S3 Backup & Restore ===
+Plugin Name: Amazon S3 Backup & Restore
 Version: 1.0.1
 Donate link: http://www.wpadm.com/donate
 URI: http://www.wpadm.com/amazon-s3-backup
 Tags: Amazon, Amazon S3, backet, baket, backup, Amazon S3 backup, database, file, full backup, manage, sicherung, database backup, file backup, page backup, page, web, web backup, website, website backup, site, site backup, back up, cloud, Cloud Files, cloud backup, db backup, dump, migrate, multisite, storage, time, upload, data bank, zip, archive, backups, db
 Requires at least: 3.9
-Tested up to: 4.2.2
+Tested up to: 4.2.3
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Author: WPAdm.com
 Contributors: WPAdm.com
 
-Amazon S3 Backup Plugin to create Amazon S3 Full Backup (Files + Database)
+Amazon S3 Backup & Restore Plugin to create Amazon S3 Full Backup (Files + Database) or Restore, Duplicate, Clone or Migrate of your Website
 
 == Description ==
 
-Supports WordPress Backup and Restore to/from Local Storage or upload Backups to Amazon S3 backet.
+Supports WordPress Backup and Restore to/from Local Storage or upload/download Backups to/from Amazon S3 backet.
 
 * Local Backup: create the Full Backup of Web Page (Files + Database) and store this at Local Storage of the Site;
-* Amazon S3 Backup to backet: create the Full Backup (Files + Database) of Website at Local Storage and upload this to Amazon S3 backet;
+* Amazon S3 Backup and Restor (restoration) to / from backet: create the Full Backup (Files + Database) of Website at Local Storage and upload this to Amazon S3 backet;
 
 If you need help with the plugin or you want to report a bug please refer to http://www.wpadm.com/support/
 
