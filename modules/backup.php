@@ -14,13 +14,7 @@ class backup extends module_as3b {
             main::log( lang::get( 'Start Backup process...', false ) );
             $this->init();
             $db_param = $this->getDBParams();
-            include main::getPluginDir() . '/libs/classes/as3b-mysql.php';
-            $mysql = new as3b_mysql();
-            $mysql->user = $db_param['user'];
-            $mysql->password = $db_param['pass'];
-            $mysql->host = $db_param['host'];
-            $mysql->db = $db_param['db'];
-            $mysql->connect();
+            $mysql = $this->incMysql();
             if (isset($this->params['optimize'])) {
                 main::log( lang::get('Optimize Database Tables', false));
                 $mysql->optimize();
@@ -62,7 +56,8 @@ class backup extends module_as3b {
                         $dirs[$i] = basename($dirs[$i]);
                     }
                 }
-                main::log( str_replace('%s', $size, lang::get( 'Backup created is finish ( %s )', false ) ) ); 
+                $sizeMb = round( $size / 1024 / 1024, 2) ; // MB
+                main::log( str_replace('%s', $sizeMb, lang::get( 'Backup created is finish ( %s Mb)', false ) ) ); 
                 $this->dirs = $dirs;
                 $this->size = $size;
             }
@@ -196,10 +191,4 @@ class backup extends module_as3b {
         $this->db_file = $this->dir_backup . '/mysqldump.sql';
 
     }
-    private function getDBParams()
-    {
-        include_once ABSPATH . 'wp-config.php';
-        return array('db' => DB_NAME, 'user' => DB_USER, 'pass' => DB_PASSWORD, 'host' => DB_HOST);
-    }
-
 }

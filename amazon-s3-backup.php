@@ -2,7 +2,7 @@
 /*
 Plugin Name: Amazon S3 Backup
 Description: Amazon S3 Backup Plugin to create Amazon S3 Full Backup (Files + Database)
-Version: 1.0.0
+Version: 1.0.1
 */
 
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'libs' . DIRECTORY_SEPARATOR . "main.php";

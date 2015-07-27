@@ -3,13 +3,6 @@
         jQuery(document).ready(function(){
             jQuery('[data-toggle="tooltip"]').tooltip(); 
         });
-    </script>
-    <style>
-        .pointer {
-            cursor: pointer;
-        }
-    </style>
-    <script>
         process_flag = 0;
         function start_backup(type)
         {
@@ -119,7 +112,7 @@
                 size_backup.toFixed(2) + "Mb" +
                 '</td>' +
                 '<td>' +
-            //    '<a href="javascript:void(0)" class="button-wpadm" title="Restore" onclick="show_recovery_form(\'local\', \'' + data.name + '\')"><span class="pointer dashicons dashicons-backup"></span>Restore</a> &nbsp;' +
+                '<a href="javascript:void(0)" class="button-wpadm" title="Restore" onclick="recovery_form(\'' + data.type + '\', \'' + data.name + '\')"><span class="pointer dashicons dashicons-backup"></span>Restore</a> &nbsp;' +
                 '<a href="javascript:void(0)" class="button-wpadm" title="Delete" onclick="delete_backup(\'' + data.name + '\', \'' + data.type + '\')"><span class="pointer dashicons dashicons-trash"></span>Delete</a> &nbsp;' +
                 '</td>' +
                 '</tr>'+
@@ -137,9 +130,9 @@
                 '</tr>')
             }
         }
-       
-       
-       
+
+
+
     </script>
     <div>
         <?php if (!empty($error)) {
@@ -435,7 +428,7 @@
                                 <td onclick="shows('<?php echo md5( print_r($data['data'][$i], 1) );?>')" class="pointer"><?php echo $size . "Mb";?></td>
                                 <?php if(is_admin() || is_super_admin()) {?>
                                     <td>
-                                       <!--  <a class="button-wpadm" href="javascript:void(0)" title="Restore" onclick="show_recovery_form('<?php echo $data['data'][$i]['type'];?>', '<?php echo $data['data'][$i]['name']?>')" style="color: #fff;"><span class="pointer dashicons dashicons-backup" style="margin-top:3px;"></span>Restore</a>&nbsp; -->
+                                        <a class="button-wpadm" href="javascript:void(0)" title="Restore" onclick="recovery_form('<?php echo $data['data'][$i]['type'];?>', '<?php echo $data['data'][$i]['name']?>')" style="color: #fff;"><span class="pointer dashicons dashicons-backup" style="margin-top:3px;"></span>Restore</a>&nbsp;
                                         <a class="button-wpadm" href="javascript:void(0)" title="Delete" onclick="delete_backup('<?php echo $data['data'][$i]['name']; ?>', '<?php echo $data['data'][$i]['type'];?>')" style="color: #fff;"><span class="pointer dashicons dashicons-trash" style="margin-top:3px;"></span>Delete</a>&nbsp;
                                     </td>
                                     <?php
@@ -458,12 +451,12 @@
                                                         <tr style="border: 0;">
                                                             <td style="border: 0;">
                                                                 <?php //if ($data['data'][$i]['type'] == 's3') {
-                                                                        echo $files[$j];
-                                                                   // } else {?>
-                                                                   <!-- <a href="<?php echo get_option('siteurl') . "/wpadm_backups/{$data['data'][$i]['name']}/{$files[$j]}"?>">
-                                                                        <?php echo $files[$j]; ?>
-                                                                    </a> -->
-                                                                    <?php // } ?>
+                                                                    echo $files[$j];
+                                                                    // } else {?>
+                                                                <!-- <a href="<?php echo get_option('siteurl') . "/wpadm_backups/{$data['data'][$i]['name']}/{$files[$j]}"?>">
+                                                                <?php echo $files[$j]; ?>
+                                                                </a> -->
+                                                                <?php // } ?>
                                                             </td>
                                                         </tr>
                                                         <?php

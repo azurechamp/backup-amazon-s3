@@ -6,7 +6,7 @@ if (!class_exists('main')) {
 
     add_action('admin_menu', array('main', 'admin_inc_menu')); 
     add_action('admin_post_activate_plugin', array('main', 'activate_plugin') );
-    add_action('wp_ajax_amazon-s3-backup-local_restore', array('main', 'restore_backup') );
+    add_action('wp_ajax_amazon-s3-backup-as3b-recover', array('main', 'restore_backup') );
     add_action('wp_ajax_amazon-s3-backup_logs', array('main', 'get_log') );
     add_action('wp_ajax_amazon-s3-backup_local_backup', array('main', 'localBackup') );
     add_action('wp_ajax_amazon-s3-backup_create', array('main', 'backup_s3') );
@@ -42,6 +42,14 @@ if (!class_exists('main')) {
         {
             if (is_dir($_dir)) {
                 file_put_contents($_dir . "/index.php", "<?php \n echo 'plugins';");
+            }
+        }
+
+        public static function mkdir($dir) 
+        {
+            if (!is_dir($dir)) {
+                mkdir($dir, 0755);
+                self::setIndex($dir);
             }
         }
         public static function getTmpDir()
@@ -121,8 +129,6 @@ if (!class_exists('main')) {
         public static function get_log()
         {
             @session_write_close();
-            @session_start();
-
             $log = self::getLog();
             $log2 = self::getPluginDir() . "/logs/logs2";
             if (file_exists($log2)) {
@@ -134,6 +140,7 @@ if (!class_exists('main')) {
             }
             $log = explode("\n", $log);
             krsort($log);
+            @session_start();
             echo json_encode(array('log' => $log));
             wp_die();
         }
@@ -314,8 +321,10 @@ if (!class_exists('main')) {
 
         public static function localBackup()
         {
+            @session_write_close();
             self::remove(self::$log_file);
             $core = new core('backup', array('params' => array( 'optimize' => 1, ), 'sets' => 1));
+            @session_start();
             echo json_encode( plugin_unpack((string)$core) );
             wp_die();
         }
@@ -468,6 +477,7 @@ if (!class_exists('main')) {
         }
         public static function backup_s3()
         {
+            @session_write_close();
             self::remove(self::$log_file);
             $core = new core('backup', array('params' => array( 'optimize' => 1, ), 'sets' => 1 ) );
             $res = plugin_unpack((string)$core);
@@ -506,7 +516,18 @@ if (!class_exists('main')) {
                 self::remove(BACKUP_DIR . '/' . $res['name']);
             }
             echo json_encode( $res );
+            @session_start();
+            wp_die();
+        }
+        public static function restore_backup()
+        {
+            if (isset($_POST['type']) && isset($_POST['name'])) {
+                self::remove(self::$log_file);  
+                $core = new core('recover', array('params' => array( 'name' => $_POST['name'], 'type' => $_POST['type'] ) ) );
+                echo json_encode( plugin_unpack((string)$core) );
+            }                           
             wp_die();
         }
     }
+
 }

@@ -164,11 +164,11 @@ function delete_backup(backup, type)
     document.delete_backups.backup_type.value = type;
     document.delete_backups.submit();
 }
-function show_recovery_form(type, name)
+function recovery_form(type, name)
 {
 
     var data_backup = {
-        'action': 'wpadm_db_s3_local_restore',
+        'action': 'amazon-s3-backup-as3b-recover',
         'name': name,
         'type': type,
     };  

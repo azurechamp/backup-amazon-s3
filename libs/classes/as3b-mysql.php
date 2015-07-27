@@ -7,6 +7,7 @@ if (!class_exists('as3b_mysql')) {
         public $user = '';
         public $password = '';
         public $dbh ;
+        public $log = array();
 
         public function connect() {
             main::log("----------------------------------------------------");
@@ -112,9 +113,8 @@ if (!class_exists('as3b_mysql')) {
             throw new Exception($txt);
         }
 
-        public function restore($db, $file)
+        public function restore($file)
         {
-            $this->dbh = $this->connect($db);
             main::log( lang::get('Restore Database was started' , false) );
             $fo = fopen($file, "r");
             if (!$fo) {
@@ -131,6 +131,10 @@ if (!class_exists('as3b_mysql')) {
                         $sql .= $char_new;
                     } else {
                         $ress = $this->dbh->query($sql);
+                        //$log = $this->parseMysql($sql);
+                        if ( !empty( $log['message'] ) ) {
+                            main::log( lang::get( str_replace("%s", $log['table'], $log['message'] ), false ) );
+                        }
                         if (!empty( $this->dbh->last_error ) && $n > 0) {
                             $this->setError($this->dbh->last_error);
                             main::log(lang::get('MySQL Error: ' , false) . $this->dbh->last_error);
@@ -141,6 +145,35 @@ if (!class_exists('as3b_mysql')) {
                 }
             }
             main::log(lang::get('Restore Database was finished' , false));  
+        }
+        function parseMysql($sql)
+        {
+            $msg = $table = '';
+            $res = array();
+            if( stripos($sql, "create") ) {
+                preg_match("/create table [`]{0,1}([a-zA-Z_]+)[`]{0,1}/i", $sql, $res);
+            } elseif( stripos($sql, "drop") ) {
+                preg_match("/drop table [`]{0,1}([a-zA-Z_]+)[`]{0,1}/i", $sql, $res);
+            } elseif( stripos($sql, "insert") ) {
+                preg_match("/insert into [`]{0,1}([a-zA-Z_]+)[`]{0,1}/i", $sql, $res);
+            } 
+            if (isset($res[1])) {
+                $table = $res[1];
+            }
+            if (!empty($table) && !isset($this->log['create'][$table])) {
+                $msg = 'Create to `%s`';
+                $this->log['create'][$table] = 1;
+            }
+            if (!empty($table) && !isset($this->log['drop'][$table])) {
+                $msg = 'Drop to `%s`';
+                $this->log['drop'][$table] = 1;
+            }
+            if (!empty($table) && !isset($this->log['insert'][$table])) {
+                $msg = 'Insert to `%s`';
+                $this->log['insert'][$table] = 1;
+            }
+
+            return array('message' => $msg, 'table' => $table);
         }
     }
 }

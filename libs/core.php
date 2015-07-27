@@ -68,6 +68,7 @@ if (!class_exists('core')) {
                 $this->method = str_replace("-", "_", $this->method);
                 $command = new $this->method($this->params);
                 $command->run();
+                $this->result = $command->result;
                 if (!empty($command->dirs) && !empty($command->size)) {
                     $this->result->setData($command->dirs);
                     $this->result->setSize($command->size);
