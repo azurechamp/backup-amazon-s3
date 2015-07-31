@@ -745,12 +745,27 @@ h3.plugins-title {
 .stat-setting-save {
     text-align: center; margin-top: 10px;
 }
-
+.as3b-form-info {
+    padding:15px;
+}
+.as3b-form-info div.detail{
+    float:left;
+    margin-left:8px;
+    margin-top:11px;
+}
 /*default style */
 @media only screen and (max-width: 960px) {
 /*
 tablet computer
 */
+.as3b-form-info {
+    padding:10px;
+}
+.as3b-form-info div.detail{
+    float:left;
+    margin-left:4px;
+    margin-top:7px;
+}
 .stat-wpadm-info {
 margin-left: 9px; height:100%; padding-top: 0px; margin-top:20px;
 color: #fff;
@@ -827,13 +842,36 @@ width: 18px;
 
 }
 @media only screen and (max-width: 1124px) {
-
+.as3b-form-info {
+    padding:10px;
+}
+.as3b-form-info div.detail{
+    float:left;
+    margin-left:4px;
+    margin-top:7px;
+}
 }
 @media only screen and (max-width: 758px) {
 /*
 vertical tablet computer
 */
+.as3b-form-info {
+    padding:5px;
+}
+.as3b-form-info div.detail{
+    float:left;
+    margin-left:2px;
+    margin-top:4px;
+}
 }
 @media only screen and (max-width: 524px) {
 /*phone*/
+.as3b-form-info {
+    padding:3px;
+}
+.as3b-form-info div.detail{
+    float:left;
+    margin-left:1px;
+    margin-top:2px;
+}
 }
