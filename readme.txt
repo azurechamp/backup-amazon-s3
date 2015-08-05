@@ -50,7 +50,12 @@ WE DO NOT COLLECT AND DO NOT STORE THE PERSONAL DATA OF USERS FROM THIS PLUGIN!
 
 == Changelog ==
 
-Version 1.0.0
+Please, try to update this plug-in to the latest version to avoid security and other problems.
+
+The latest version of Amazon S3 Backup & Restore plugin is: 1.0.1
+
+Thank you. 
+
 
 == Upgrade Notice ==
 
