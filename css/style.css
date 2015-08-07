@@ -863,6 +863,10 @@ vertical tablet computer
     margin-left:2px;
     margin-top:4px;
 }
+.as3b-form-info div.detail .button {
+    width:50px;
+    font-size: 12px;
+}
 }
 @media only screen and (max-width: 524px) {
 /*phone*/
@@ -873,5 +877,9 @@ vertical tablet computer
     float:left;
     margin-left:1px;
     margin-top:2px;
+}
+.as3b-form-info div.detail .button {
+    width:30px;
+    font-size: 10px;
 }
 }
