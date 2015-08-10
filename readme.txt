@@ -20,6 +20,7 @@ Supports WordPress Backup and Restore to/from Local Storage or upload/download B
 
 * Local Backup: create the Full Backup of Web Page (Files + Database) and store this at Local Storage of the Site;
 * Amazon S3 Backup and Restor (restoration) to / from backet: create the Full Backup (Files + Database) of Website at Local Storage and upload this to Amazon S3 backet;
+* You can manage more then one domain using free account at www.wpadm.com
 
 If you need help with the plugin or you want to report a bug please refer to http://www.wpadm.com/support/
 
