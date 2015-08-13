@@ -850,6 +850,11 @@ width: 18px;
     margin-left:4px;
     margin-top:7px;
 }
+.as3b-form-info div.detail .button {
+    width:150px;
+    font-size: 14px;
+    height: 30px;
+}
 }
 @media only screen and (max-width: 758px) {
 /*
@@ -865,6 +870,7 @@ vertical tablet computer
 }
 .as3b-form-info div.detail .button {
     width:50px;
+    height: 25px;
     font-size: 12px;
 }
 }
@@ -879,7 +885,8 @@ vertical tablet computer
     margin-top:2px;
 }
 .as3b-form-info div.detail .button {
-    width:30px;
-    font-size: 10px;
+    width: 30px;
+    height: 20px;
+    font-size: 8px;
 }
 }
