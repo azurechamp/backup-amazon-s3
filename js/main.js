@@ -260,3 +260,15 @@ function blickForm(id, t)
         blick(id);
     } 
 }
+
+function showAmzazonS3BackupInfo()
+{
+    display = jQuery('#information-amazon').css('display');
+    if (display == 'none') {
+        jQuery('#information-amazon').show('slow');
+    } else {
+        if (show) {
+            jQuery('#information-amazon').hide('slow');
+        }
+    }
+}
